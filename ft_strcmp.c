@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppagola- <ppagola-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ppagola- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 17:40:42 by ppagola-          #+#    #+#             */
-/*   Updated: 2024/12/06 00:51:39 by ppagola-         ###   ########.fr       */
+/*   Created: 2025/01/11 22:48:33 by ppagola-          #+#    #+#             */
+/*   Updated: 2025/01/11 22:52:23 by ppagola-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
-
-	if (c == '\0')
-		return ((char *)s);
-	i = 0;
-	while (s[i])
+	while (*s1 && (*s1 == *s2))
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
+		s1++;
+		s2++;
 	}
-	return (NULL);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

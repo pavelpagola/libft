@@ -33,3 +33,38 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
+
+char	*ft_strstr(const char *haystack, const char *needle)
+{
+	size_t	i;
+	size_t	j;
+
+	if (*needle == '\0')
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i])
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j])
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)&haystack[i]);
+			j++;
+		}
+		i++;
+	}
+	return (NULL);
+}
+/*
+char	**ft_grep(char **lines, char *needle)
+{
+	char	**ans;
+	int		i;
+	int		n;
+
+	i = -1;
+	while (lines[++i])
+		if (lines)
+
+	return (ans);
+}*/

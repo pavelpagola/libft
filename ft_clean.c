@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_clean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppagola- <ppagola-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ppagola- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 17:40:42 by ppagola-          #+#    #+#             */
-/*   Updated: 2024/12/06 00:51:39 by ppagola-         ###   ########.fr       */
+/*   Created: 2025/01/24 18:56:58 by ppagola-          #+#    #+#             */
+/*   Updated: 2025/01/24 18:57:01 by ppagola-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_clean(void)
 {
-	size_t	i;
+	ft_close_all();
+	ft_free_all_malloc();
+	get_next_line(-1);
+}
 
-	if (c == '\0')
-		return ((char *)s);
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	return (NULL);
+void	ft_exit(int i)
+{
+	ft_clean();
+	exit(i);
 }

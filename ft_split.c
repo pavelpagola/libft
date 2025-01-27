@@ -41,7 +41,7 @@ static char	*get_next_word(char const **s, char c)
 	len = 0;
 	while ((*s)[len] && (*s)[len] != c)
 		len++;
-	word = (char *)malloc(len + 1);
+	word = (char *)ft_malloc(len + 1);
 	if (!word)
 		return (NULL);
 	ft_strlcpy(word, *s, len + 1);
@@ -49,14 +49,17 @@ static char	*get_next_word(char const **s, char c)
 	return (word);
 }
 
-static void	free_split(char **result, int i)
+void	ft_free_split(char **result)
 {
-	while (i > 0)
+	int	i;
+
+	i = 0;
+	while (result[i])
 	{
-		free(result[i - 1]);
-		i--;
+		ft_free(result[i]);
+		i++;
 	}
-	free(result);
+	ft_free(result);
 }
 
 char	**ft_split(char const *s, char c)
@@ -68,7 +71,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	words = word_count(s, c);
-	result = (char **)malloc((words + 1) * sizeof(char *));
+	result = (char **)ft_malloc((words + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -77,7 +80,7 @@ char	**ft_split(char const *s, char c)
 		result[i] = get_next_word(&s, c);
 		if (!result[i])
 		{
-			free_split(result, i);
+			ft_free_split(result);
 			return (NULL);
 		}
 		i++;

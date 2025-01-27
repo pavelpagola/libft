@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   get_next_line_utils_2_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppagola- <ppagola-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ppagola- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 17:40:42 by ppagola-          #+#    #+#             */
-/*   Updated: 2024/12/06 00:51:39 by ppagola-         ###   ########.fr       */
+/*   Created: 2025/01/16 14:41:05 by ppagola-          #+#    #+#             */
+/*   Updated: 2025/01/16 14:41:09 by ppagola-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+static void	ft_gnl_order_free(void)
 {
-	size_t	i;
+	get_next_line(-1);
+}
 
-	if (c == '\0')
-		return ((char *)s);
-	i = 0;
-	while (s[i])
+void	ft_set_clean_gnl(void)
+{
+	static int	dfgdfg = 1;
+
+	if (dfgdfg == 1)
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
+		dfgdfg = 0;
+		atexit(ft_gnl_order_free);
 	}
-	return (NULL);
 }
